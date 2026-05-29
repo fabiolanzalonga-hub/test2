@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malta Properties — Mediterranean Property Intelligence</title>
+
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom Luxury CSS -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+
+    <!-- ==========================================
+         SEZIONE 1 — NAVBAR
+         ========================================== -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top custom-navbar">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <div class="nav-logo-box">M</div>
+          <div>
+            <span class="nav-brand-text">Malta Properties</span>
+            <span class="nav-subtitle-text">Mediterranean Property Intelligence</span>
+          </div>
+        </a>
+        <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#quiz-section">Valutazione Immobiliare</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#market">Analisi Selettiva</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#check">Determinanti di Valore</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#mktquiz">Market Insight Check</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-link-custom" href="#social">Proprietari</a>
+            </li>
+            <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+              <button class="btn btn-gold" data-open-lead-modal="true" id="navCta">Valuta il tuo immobile</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- ==========================================
+         SEZIONE 2 — HERO (Natural Mediterranean Light & SOBER LUXURY)
+         ========================================== -->
+    <header class="hero-section text-start d-flex align-items-center">
+      <!-- Background floating slow wave graphics for yacht vibes -->
+      <svg class="decor-wave decor-wave-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,50 C30,40 70,60 100,50 L100,100 L0,100 Z" fill="currentColor" opacity="0.12"></path>
+      </svg>
+      <svg class="decor-wave decor-wave-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 C40,45 60,15 100,30 L100,100 L0,100 Z" fill="currentColor" opacity="0.08"></path>
+      </svg>
+
+      <div class="container position-relative z-1">
+        <div class="row align-items-center">
+          <div class="col-lg-8 text-start reveal">
+            <span class="tag-pill">Malta Real Estate Report 2026</span>
+            <h1 class="display-1 text-navy mb-4 fw-light" id="heroTitle">
+              Il valore reale della tua proprietà a Malta <br><i>non è quello che pensi.</i>
+            </h1>
+            <p class="lead text-muted mb-4 font-sans max-width-680 fs-5" id="heroSubtitle">
+              Analizziamo posizione, domanda internazionale e vendite recenti per dirti — in meno di 60 secondi — quanto può realmente valere oggi il tuo immobile residenziale.
+            </p>
+            <div class="d-flex flex-wrap gap-3 align-items-center mt-4">
+              <a href="#quiz-section" class="btn btn-gold py-3 px-4 fs-6" id="heroCta">Inizia valutazione gratuita &rarr;</a>
+            </div>
+            <p class="text-muted opacity-75 mt-3 fs-7" id="heroSubtext">
+              <i class="bi bi-shield-check text-teal"></i> Gratuito · Riservato · Analisi entro 24h
+            </p>
+          </div>
+        </div>
+
+        <!-- Section bottom statistics panel (credible context metrics) -->
+        <div class="row hero-stats-bar text-start mt-5 reveal delay-2" id="statsBar">
+          <div class="col-md-4 mb-4 mb-md-0 hero-stat-item">
+            <div class="hero-stat-val font-serif" id="stat-1">Domanda Estera</div>
+            <div class="hero-stat-lbl" id="lbl-1">In crescita costante residenziale extra-EU</div>
+          </div>
+          <div class="col-md-4 mb-4 mb-md-0 hero-stat-item border-start-md">
+            <div class="hero-stat-val font-serif" id="stat-2">Mercato Premium</div>
+            <div class="hero-stat-lbl" id="lbl-2">Forte selezione basata sull'esposizione</div>
+          </div>
+          <div class="col-md-4 hero-stat-item border-start-md">
+            <div class="hero-stat-val font-serif" id="stat-4">Valore Area</div>
+            <div class="hero-stat-lbl" id="lbl-4">Altamente dipendente dalla micro-location</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ==========================================
+         SEZIONE 3 — PRE-VALUTAZIONE PRIVATA (QUIZ A 8 STEP)
+         ========================================== -->
+    <section id="quiz-section" class="py-5 bg-cream">
+      <div class="container py-4">
+        <div class="text-center mb-5 reveal" id="quizHeader">
+          <span class="tag-pill">Pre-Valutazione Privata 2026</span>
+          <h2 class="display-3 text-navy mt-2 mb-3" id="quizTitle">Scopri il posizionamento reale del tuo immobile</h2>
+          <p class="text-muted font-sans max-width-600 mx-auto mb-0" id="quizSubtitle">
+            Non è un quiz d'intrattenimento. È una prima valutazione strategica basata su parametri comparabili di pregio maltese.
+          </p>
+        </div>
+
+        <!-- Multi-Step interactive Quiz Card -->
+        <div class="quiz-card reveal delay-1" id="quizFormContainer">
+          <!-- Custom gradient progress wrapper -->
+          <div class="quiz-progress-wrapper">
+            <div class="quiz-progress-bar" id="quizProgressBar"></div>
+          </div>
+
+          <!-- Entry screen container -->
+          <div id="quizEntryScreen" class="text-center py-4">
+            <span class="fs-1 text-gold-dark d-block mb-3">🧭</span>
+            <h3 class="font-serif mb-3 text-navy">Inizia la tua valutazione immobiliare</h3>
+            <p class="text-muted font-sans max-width-550 mx-auto mb-4 fs-7">
+              Rispondi a poche domande qualificate per ottenere una prima analisi del posizionamento e della stima stimata del tuo immobile nel mercato maltese 2026.
+            </p>
+            <div class="text-muted fs-8 mb-4">
+              <i class="bi bi-check2-circle text-teal"></i> <span class="mx-1">100% gratuito</span> · 
+              <i class="bi bi-check2-circle text-teal"></i> <span class="mx-1">Nessun impegno</span> · 
+              <i class="bi bi-check2-circle text-teal"></i> <span class="mx-1">Risultato immediato + report completo</span>
+            </div>
+            <button class="btn btn-gold py-3 px-5 text-uppercase fs-7" id="startQuizBtn">
+              Inizia analisi
+            </button>
+          </div>
+
+          <!-- Dynamic Steps Holder (Hidden initially) -->
+          <div id="quizActiveSteps" class="d-none">
+            <div class="mb-4 text-center">
+              <span class="text-gold-dark fw-semibold text-uppercase font-sans fs-8" id="quizStepLabel">Passo 1 di 8</span>
+            </div>
+
+            <!-- Step 1 - Tipo immobile -->
+            <div class="quiz-step active" data-step="1" id="step1">
+              <h3 class="h4 text-center text-navy mb-4" id="step1-title">Qual è la tipologia della tua proprietà?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="5" id="opt-1-1">Appartamento</div>
+                <div class="quiz-opt" data-score="8" id="opt-1-2">Penthouse</div>
+                <div class="quiz-opt" data-score="10" id="opt-1-3">Villa indipendente</div>
+                <div class="quiz-opt" data-score="7" id="opt-1-4">Townhouse tradizionale</div>
+                <div class="quiz-opt" data-score="6" id="opt-1-5">Immobile in sviluppo</div>
+              </div>
+            </div>
+
+            <!-- Step 2 - Zona geografica (driver #1 del valore) -->
+            <div class="quiz-step" data-step="2" id="step2">
+              <h3 class="h4 text-center text-navy mb-1" id="step2-title">Dove si trova l’immobile?</h3>
+              <p class="text-center text-muted fs-8 mb-4">Il valore a Malta varia fortemente per micro-area.</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="10" id="opt-2-1">Sliema / St. Julian's</div>
+                <div class="quiz-opt" data-score="9" id="opt-2-2">Valletta / Three Cities</div>
+                <div class="quiz-opt" data-score="8" id="opt-2-3">Mellieha / North Coast</div>
+                <div class="quiz-opt" data-score="7" id="opt-2-4">Gozo</div>
+                <div class="quiz-opt" data-score="6" id="opt-2-5">Altra zona</div>
+              </div>
+            </div>
+
+            <!-- Step 3 - Vista (emozionale) -->
+            <div class="quiz-step" data-step="3" id="step3">
+              <h3 class="h4 text-center text-navy mb-4" id="step3-title">Che tipo di vista ha la proprietà?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="10" id="opt-3-1">Vista mare diretta</div>
+                <div class="quiz-opt" data-score="8" id="opt-3-2">Vista mare parziale</div>
+                <div class="quiz-opt" data-score="7" id="opt-3-3">Vista aperta / skyline</div>
+                <div class="quiz-opt" data-score="5" id="opt-3-4">Vista interna / limitata</div>
+                <div class="quiz-opt" data-score="4" id="opt-3-5">Nessuna vista particolare</div>
+              </div>
+            </div>
+
+            <!-- Step 4 - Superficie (dimensione) -->
+            <div class="quiz-step" data-step="4" id="step4">
+              <h3 class="h4 text-center text-navy mb-1" id="step4-title">Qual è la superficie approssimativa?</h3>
+              <p class="text-center text-muted fs-8 mb-4">Influenza diretta sul posizionamento di mercato.</p>
+              <div class="slider-container text-center max-width-450 mx-auto">
+                <div class="display-3 text-navy font-serif mb-3">
+                  <span id="m2Display">120</span> <span class="fs-4 italic-accent">mq</span>
+                </div>
+                <input type="range" class="custom-range-slider mb-4" id="rangeM2" min="30" max="600" value="120" />
+                <button class="btn btn-gold py-2.5 px-4 d-block mx-auto" id="quizNextBtn">Continua &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Step 5 - Stato immobile -->
+            <div class="quiz-step" data-step="5" id="step5">
+              <h3 class="h4 text-center text-navy mb-4" id="step5-title">Qual è lo stato attuale?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="10" id="opt-5-1">Ristrutturato recentemente</div>
+                <div class="quiz-opt" data-score="8" id="opt-5-2">Buono stato</div>
+                <div class="quiz-opt" data-score="6" id="opt-5-3">Da ristrutturare parzialmente</div>
+                <div class="quiz-opt" data-score="4" id="opt-5-4">Da ristrutturare completamente</div>
+              </div>
+            </div>
+
+            <!-- Step 6 - Anno costruzione -->
+            <div class="quiz-step" data-step="6" id="step6">
+              <h3 class="h4 text-center text-navy mb-4" id="step6-title">In che periodo è stato costruito?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="7" id="opt-6-1">Prima del 1980 / Storico lusso</div>
+                <div class="quiz-opt" data-score="6" id="opt-6-2">1980–2000</div>
+                <div class="quiz-opt" data-score="8" id="opt-6-3">2000–2015</div>
+                <div class="quiz-opt" data-score="9" id="opt-6-4">Dopo 2015</div>
+                <div class="quiz-opt" data-score="10" id="opt-6-5">Nuova costruzione</div>
+              </div>
+            </div>
+
+            <!-- Step 7 - Contesto residenziale -->
+            <div class="quiz-step" data-step="7" id="step7">
+              <h3 class="h4 text-center text-navy mb-4" id="step7-title">Che tipo di contesto descrive meglio la proprietà?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="10" id="opt-7-1">Villa indipendente con privacy</div>
+                <div class="quiz-opt" data-score="6" id="opt-7-2">Condominio residenziale</div>
+                <div class="quiz-opt" data-score="9" id="opt-7-3">Complesso di lusso con servizi</div>
+                <div class="quiz-opt" data-score="7" id="opt-7-4">Centro urbano</div>
+                <div class="quiz-opt" data-score="8" id="opt-7-5">Zona tranquilla residenziale</div>
+              </div>
+            </div>
+
+            <!-- Step 8 - Soft seller signal -->
+            <div class="quiz-step" data-step="8" id="step8">
+              <h3 class="h4 text-center text-navy mb-4" id="step8-title">Cosa descrive meglio la tua situazione?</h3>
+              <div class="quiz-options">
+                <div class="quiz-opt" data-score="10" id="opt-8-1">Sto valutando una possibile vendita nei prossimi mesi</div>
+                <div class="quiz-opt" data-score="9" id="opt-8-2">Vorrei conoscere il valore attuale</div>
+                <div class="quiz-opt" data-score="8" id="opt-8-3">Sto confrontando il mercato</div>
+                <div class="quiz-opt" data-score="6" id="opt-8-4">Non ho intenzione immediata di vendere</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Loading suspense moment inside quiz -->
+          <div id="quizLoadingScreen" class="loading-panel d-none py-5">
+            <span class="fs-1 text-gold d-block mb-3 animate-pulse">⏳</span>
+            <h3 class="font-serif mb-2 text-navy">Analisi del posizionamento in corso…</h3>
+            <p class="text-muted font-sans max-width-500 mx-auto fs-7">
+              Stiamo confrontando la tua proprietà con transazioni reali storiche, parametri di domanda internazionale e micro-market trends a Malta 2026.
+            </p>
+            <div class="scanning-line"></div>
+          </div>
+
+          <!-- Final step results section (hidden initially) -->
+          <div id="quizResultsArea" class="quiz-step d-none text-center py-2">
+            <span id="quizTierBadge" class="result-badge badge-prime">Prime Market Asset</span>
+            <h3 class="display-4 text-navy mt-1 mb-3" id="quizTierTitle">Il tuo asset: <i>Prime Market Asset</i></h3>
+            <p id="quizTierDesc" class="text-muted leading-relaxed font-sans max-width-600 mx-auto mb-4 fs-7">
+              La tua proprietà si posiziona tra le più richieste nel mercato attuale per micro-area e congiuntura residenziale.
+            </p>
+
+            <!-- Dynamic values generated at runtime -->
+            <div class="row g-3 text-start mx-auto my-4 max-width-600">
+              <div class="col-md-6">
+                <div class="mini-stat-card bg-light border p-3">
+                  <span class="text-muted opacity-75 fs-8 text-uppercase d-block mb-1">Prezzo Medio Area Stimato</span>
+                  <strong class="font-serif text-sea-blue fs-5" id="resAvgM2">€5.200 / mq</strong>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mini-stat-card bg-light border p-3">
+                  <span class="text-muted opacity-75 fs-8 text-uppercase d-block mb-1">Valore Indicativo Preliminare</span>
+                  <strong class="font-serif text-teal fs-4" id="resTotalEst">€624.000</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic Custom Bullet Insights -->
+            <div class="insight-pills max-width-600 mx-auto">
+              <div class="insight-pill-item" id="insightArea">
+                <i class="bi bi-geo-alt-fill text-gold-dark me-2"></i><strong>Domanda micro-area:</strong> Appeal eccellente registrato nell'area prescelta.
+              </div>
+              <div class="insight-pill-item" id="insightVista">
+                <i class="bi bi-eye-fill text-gold-dark me-2"></i><strong>Impatto cono visivo:</strong> La vista mare genera un premio fino al 25% sul listino base.
+              </div>
+              <div class="insight-pill-item" id="insightComparative">
+                <i class="bi bi-file-earmark-bar-graph-fill text-gold-dark me-2"></i><strong>Comparabili recenti:</strong> Basato sull'analisi preliminare di transazioni analoghe certificate.
+              </div>
+            </div>
+
+            <!-- Embed Form inside the results directly for extremely high conversion rate -->
+            <div class="results-embed-form max-width-550 mx-auto">
+              <h4 class="font-serif mb-2 text-navy">Ricevi l’analisi completa della tua proprietà</h4>
+              <p class="text-muted fs-8 font-sans mb-4">
+                Un report dettagliato gratuito firmato dai nostri analisti locali basato su vendite comparabili reali, domanda globale e micro-location intelligence.
+              </p>
+
+              <form id="quizEmbedLeadForm" class="text-start">
+                <div class="row g-2 mb-3">
+                  <div class="col-sm-6">
+                    <label for="quizFormName" class="form-label fs-8 text-uppercase fw-semibold text-navy">Nome *</label>
+                    <input type="text" class="form-control modal-form-input" id="quizFormName" required placeholder="Es. George" />
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="quizFormMail" class="form-label fs-8 text-uppercase fw-semibold text-navy">Indirizzo Email *</label>
+                    <input type="email" class="form-control modal-form-input" id="quizFormMail" required placeholder="nome@esempio.com" />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="quizFormPhone" class="form-label fs-8 text-uppercase fw-semibold text-navy">Telefono *</label>
+                  <div class="input-group">
+                    <span class="input-group-text modal-input-addon font-sans fs-7">+356</span>
+                    <input type="tel" class="form-control modal-form-input" id="quizFormPhone" required placeholder="99XXXXXX" />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="quizFormNotes" class="form-label fs-8 text-uppercase fw-semibold text-navy">Note aggiuntive (Opzionale)</label>
+                  <textarea class="form-control modal-form-input" id="quizFormNotes" rows="2" placeholder="Es. Ha una terrazza di 40mq, ristrutturato nel 2022..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-gold py-3 w-100 text-uppercase fw-semibold mb-2">
+                  👉 Ricevi il report completo entro 24 ore
+                </button>
+                <p class="text-center text-muted fs-9 mb-0">
+                  <i class="bi bi-lock-fill text-gold-dark me-1"></i> Riservato · Nessun impegno · Coperto dal GDPR europeo.
+                </p>
+              </form>
+
+              <!-- Success block inside results -->
+              <div id="quizFormSuccessBlock" class="d-none text-center py-4">
+                <span class="fs-1 text-teal d-block mb-3">✓</span>
+                <h5 class="font-serif mb-2 text-navy text-center">Grazie! Richiesta inviata correttamente</h5>
+                <p class="text-muted fs-7 font-sans">
+                  I dati sono stati registrati nei nostri database privati. Un advisor esperto elaborerà il report e ti contatterà entro 24 ore.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 4 — DINAMICHE DI MERCATO SELETTIVE
+         ========================================== -->
+    <section id="market" class="py-5 market-section text-start">
+      <div class="container py-4">
+        <div class="row align-items-center">
+          <!-- Left column elements -->
+          <div class="col-lg-6 mb-5 mb-lg-0 text-start reveal">
+            <span class="tag-pill">Andamento di Mercato</span>
+            <h2 class="display-3 text-navy mb-4">Il mercato immobiliare maltese sta diventando sempre più selettivo</h2>
+            <p class="lead text-muted mb-5">
+              Le differenze di valore oggi non dipendono dal mercato generale, ma dalla micro-localizzazione, dall'orientamento e dalle finiture.
+            </p>
+
+            <div class="luxury-bullet-group pe-lg-4">
+              <!-- Item 1 -->
+              <div class="luxury-bullet-item" id="bullet-1">
+                <div class="luxury-bullet-icon"><i class="bi bi-geo-fill"></i></div>
+                <div class="luxury-bullet-text">
+                  <h4>Micro-Location Intelligence</h4>
+                  <p>In aree premium come Sliema, Valletta o St. Julian's, lo scostamento tra due blocchi distanti solo 200 metri può raggiungere il 35% del valore.</p>
+                </div>
+              </div>
+              <!-- Item 2 -->
+              <div class="luxury-bullet-item" id="bullet-2">
+                <div class="luxury-bullet-icon"><i class="bi bi-box-seam"></i></div>
+                <div class="luxury-bullet-text">
+                  <h4>Selezione della Domanda</h4>
+                  <p>La clientela globale non cerca semplicemente un'abitazione generica, ma esige privacy rigorosa, altezze importanti e spazi aperti terrazzati.</p>
+                </div>
+              </div>
+              <!-- Item 3 -->
+              <div class="luxury-bullet-item" id="bullet-3">
+                <div class="luxury-bullet-icon"><i class="bi bi-arrow-up-right"></i></div>
+                <div class="luxury-bullet-text">
+                  <h4>Transazioni con liquidità immediata</h4>
+                  <p>Le offerte ad altissima intenzione (cash buyers) si concentrano su immobili già opportunamente posizionati dal punto di vista strategico.</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-gold py-3 px-4 mt-4" data-open-lead-modal="true" id="marketCta">Analizza andamento per la tua casa</button>
+          </div>
+
+          <!-- Right column dynamic Chart elements -->
+          <div class="col-lg-6 text-start reveal delay-2">
+            <div class="dark-chart-card mb-4" id="chartCard">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <h5 class="text-muted fs-8 text-uppercase letter-spacing-wide mb-1" id="chartLabel">Andamento Prezzi Residenziali</h5>
+                  <h4 class="h5 text-navy font-serif mb-0" id="chartIndicator">Prezzo Medio a Malta (€/mq) 2019 - 2026</h4>
+                </div>
+                <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-30 py-1.5 px-3 fs-8" id="chartBadge">
+                  <i class="bi bi-graph-up"></i> Mercato Selettivo
+                </span>
+              </div>
+
+              <!-- Graphic Canvas wrapper -->
+              <div class="position-relative" style="height: 280px;" id="chartCanvasWrapper">
+                <canvas id="priceChart"></canvas>
+              </div>
+
+              <div class="text-muted fs-8 d-flex align-items-center mt-3 justify-content-end" id="chartNote">
+                <i class="bi bi-info-circle me-1 text-gold-dark"></i> Dati storici consolidati Malta Properties Research.
+              </div>
+            </div>
+
+            <!-- Mini stat blocks -->
+            <div class="row g-3" id="miniStatsRow">
+              <div class="col-4">
+                <div class="mini-stat-card" id="ms-card1">
+                  <div class="mini-stat-val" id="ms-val1">+14%</div>
+                  <div class="mini-stat-lbl" id="ms-lbl1">Sliema / StJ</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mini-stat-card" id="ms-card2">
+                  <div class="mini-stat-val" id="ms-val2">52 gg</div>
+                  <div class="mini-stat-lbl" id="ms-lbl2">Tempo Medio</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mini-stat-card" id="ms-card3">
+                  <div class="mini-stat-val" id="ms-val3">+28%</div>
+                  <div class="mini-stat-lbl" id="ms-lbl3">Vista Mare Premi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 5 — CHECK 5 PUNTI (WHAT DETERMINES VALUE)
+         ========================================== -->
+    <section id="check" class="py-5 bg-cream">
+      <div class="container py-4">
+        <div class="text-center mb-5 reveal" id="checkHeader">
+          <span class="tag-pill">Determinanti Reali</span>
+          <h2 class="display-3 text-navy mt-2 mb-3" id="checkTitle">Cosa determina davvero il valore della tua proprietà</h2>
+          <p class="text-muted font-sans max-width-600 mx-auto" id="checkSubtitle">
+            Un'analisi superficiale basata unicamente sulle medie generali ignora i veri insider drivers che giustificano il pricing premium a Malta.
+          </p>
+        </div>
+
+        <div class="row g-4 justify-content-center" id="checkGrid">
+          <!-- Card 1 -->
+          <div class="col-lg-4 col-md-6 reveal" id="chk-item1">
+            <div class="premium-card h-100 d-flex text-start">
+              <div class="check-num">01</div>
+              <div class="check-content">
+                <h4 id="chk-title1">Domanda Internazionale nella tua micro-area</h4>
+                <p id="chk-desc1">Verifichiamo i flussi di investitori registrati attivi con intenzione d'acquisto specifica nel raggio di 200 metri dal tuo isolato.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-lg-4 col-md-6 reveal delay-1" id="chk-item2">
+            <div class="premium-card h-100 d-flex text-start">
+              <div class="check-num">02</div>
+              <div class="check-content">
+                <h4 id="chk-title2">Vista, esposizione e privacy</h4>
+                <p id="chk-desc2">Il campo di vista garantito (skyline storico o mare) sommato all'altezza e al livello di riservatezza complessivo del fabbricato.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col-lg-4 col-md-6 reveal delay-2" id="chk-item3">
+            <div class="premium-card h-100 d-flex text-start">
+              <div class="check-num">03</div>
+              <div class="check-content">
+                <h4 id="chk-title3">Nuovi sviluppi nelle immediate vicinanze</h4>
+                <p id="chk-desc3">L'impatto indiretto di progetti approvati d'élite vicini, che sollevano costantemente la desiderabilità dell'intero quartiere.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="col-lg-4 col-md-6 reveal" id="chk-item4">
+            <div class="premium-card h-100 d-flex text-start">
+              <div class="check-num">04</div>
+              <div class="check-content">
+                <h4 id="chk-title4">Incrocio degli atti e storico notarile</h4>
+                <p id="chk-desc4">Consultazione istantanea delle transazioni certificate e dei prezzi d'atto realmente depositati recentemente per proprietà simili nell'area.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="col-lg-4 col-md-6 reveal delay-1" id="chk-item5">
+            <div class="premium-card h-100 d-flex text-start">
+              <div class="check-num">05</div>
+              <div class="check-content">
+                <h4 id="chk-title5">Potenziale di repositioning</h4>
+                <p id="chk-desc5">Studio dei ritorni potenziali da interventi leggeri o di frazionamento strategico per massimizzare il rendimento del capitale.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Card 6 (CTA Block) -->
+          <div class="col-lg-4 col-md-6 reveal delay-2" id="chk-item6">
+            <div class="cta-grid-card h-100">
+              <h4 class="h5 text-gold-light font-serif mb-3" id="chkCtaTitle">Metti alla prova i parametri</h4>
+              <p class="text-white-50 fs-8 mb-4 px-2" id="chkCtaDesc">Richiedi un'analisi dettagliata elaborata basata su ciascuno dei 5 punti, completamente gratis.</p>
+              <button class="btn btn-gold text-uppercase py-2.5 px-4 fs-8" data-open-lead-modal="true" id="chkCtaBtn">Metti alla prova</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 6 — MARKET INSIGHT CHECK
+         ========================================== -->
+    <section id="mktquiz" class="py-5 bg-cream-dark">
+      <div class="container py-4">
+        <div class="text-center mb-5 reveal" id="triviaHeader">
+          <span class="tag-pill">Conoscenza Strumentale</span>
+          <h2 class="display-3 text-navy mt-2 mb-3" id="triviaTitle">Market Insight Check</h2>
+          <p class="text-muted font-sans max-width-600 mx-auto" id="triviaSubtitle">
+            Valuta la tua conoscenza del mercato immobiliare di pregio a Malta attraverso 3 fondamentali indicatori statistici della congiuntura attuale.
+          </p>
+        </div>
+
+        <div class="quiz-card reveal" style="max-width: 640px;" id="triviaCard">
+          <div id="triviaActiveGroup">
+            
+            <!-- Questions sequential -->
+            <!-- Q1 -->
+            <div class="trivia-step" data-trivia-step="1" id="tr-step1">
+              <h4 class="h5 text-navy mb-4 text-start font-serif" id="eq1">Q1: Quale zona ha registrato la maggiore crescita reale nell'ultimo biennio?</h4>
+              <div class="d-flex flex-column gap-2 text-start">
+                <button class="trivia-opt" data-index="0" id="opt-q1-a">Sliema Promenade / Waterfront (Giusto)</button>
+                <button class="trivia-opt" data-index="1" id="opt-q1-b">Entroterra rurale (Mosta / Attard)</button>
+                <button class="trivia-opt" data-index="2" id="opt-q1-c">Costa meridionale (Marsascala)</button>
+                <button class="trivia-opt" data-index="3" id="opt-q1-d">Nord isola (Mellieha inland)</button>
+              </div>
+              <div class="trivia-reveal d-none text-start" id="reveal-q1">
+                <span class="text-teal font-sans fw-bold text-uppercase fs-8 mb-1 d-block"><i class="bi bi-patch-check-fill"></i> Insight Tecnico</span>
+                <p class="text-muted fs-7 mb-3 trivia-explain-text">Caricamento...</p>
+                <button class="btn btn-gold py-1.5 px-3 fs-8 trivia-next-btn">Prossimo Insight &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="trivia-step d-none" data-trivia-step="2" id="tr-step2">
+              <h4 class="h5 text-navy mb-4 text-start font-serif" id="eq2">Q2: Quanto influisce la vista mare sul prezzo medio di vendita a parità di mq?</h4>
+              <div class="d-flex flex-column gap-2 text-start">
+                <button class="trivia-opt" data-index="0" id="opt-q2-a">Meno del 5% complessivamente</button>
+                <button class="trivia-opt" data-index="1" id="opt-q2-b">Circa 10-15%</button>
+                <button class="trivia-opt" data-index="2" id="opt-q2-c">Oltre il 25% di premium (Giusto)</button>
+                <button class="trivia-opt" data-index="3" id="opt-q2-d">Nessun impatto tangibile registrato</button>
+              </div>
+              <div class="trivia-reveal d-none text-start" id="reveal-q2">
+                <span class="text-teal font-sans fw-bold text-uppercase fs-8 mb-1 d-block"><i class="bi bi-patch-check-fill"></i> Insight Tecnico</span>
+                <p class="text-muted fs-7 mb-3 trivia-explain-text">Caricamento...</p>
+                <button class="btn btn-gold py-1.5 px-3 fs-8 trivia-next-btn">Prossimo Insight &rarr;</button>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="trivia-step d-none" data-trivia-step="3" id="tr-step3">
+              <h4 class="h5 text-navy mb-4 text-start font-serif" id="eq3">Q3: Qual è il tempo medio di vendita a Malta per ville di prestigio sopra €1M?</h4>
+              <div class="d-flex flex-column gap-2 text-start">
+                <button class="trivia-opt" data-index="0" id="opt-q3-a">Oltre un anno di giacenza</button>
+                <button class="trivia-opt" data-index="1" id="opt-q3-b">Circa 50-60 giorni se ben posizionato (Giusto)</button>
+                <button class="trivia-opt" data-index="2" id="opt-q3-c">Accordo immediato entro 7 giorni</button>
+                <button class="trivia-opt" data-index="3" id="opt-q3-d">Oltre due anni d'istruttoria</button>
+              </div>
+              <div class="trivia-reveal d-none text-start" id="reveal-q3">
+                <span class="text-teal font-sans fw-bold text-uppercase fs-8 mb-1 d-block"><i class="bi bi-patch-check-fill"></i> Insight Tecnico</span>
+                <p class="text-muted fs-7 mb-3 trivia-explain-text">Caricamento...</p>
+                <button class="btn btn-gold py-1.5 px-3 fs-8 trivia-next-btn">Visualizza Risultato &rarr;</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Final trivia outcomes card -->
+          <div id="triviaOutcomeGroup" class="d-none text-center py-3">
+            <div class="display-2 text-gold-dark font-serif mb-2" id="triviaOutScore">0 su 3</div>
+            <h4 class="h4 text-navy font-sans fw-bold mb-3" id="triviaOutTitle">Insight Check Concluso!</h4>
+            <p id="triviaOutMsg" class="text-muted fs-7 max-width-450 mx-auto mb-4">
+              La conoscenza di dati comparati oggettivi è fondamentale per definire e difendere il valore del tuo immobile sul mercato.
+            </p>
+            <button class="btn btn-gold text-uppercase py-2.5 px-4 fs-8" data-open-lead-modal="true" id="triviaCtaBtn">Migliora la tua perizia</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 7 — TESTIMONIANZE (Proprietari reali)
+         ========================================== -->
+    <section id="social" class="py-5 bg-cream">
+      <div class="container py-4">
+        <div class="text-center mb-5 reveal" id="socialHeader">
+          <span class="tag-pill">Storie di Successo</span>
+          <h2 class="display-3 text-navy mt-2 mb-3" id="socialTitle">Proprietari che hanno richiesto una valutazione</h2>
+          <p class="text-muted font-sans max-width-600 mx-auto" id="socialSubtitle">
+            Scopri come i proprietari hanno ottimizzato la presentazione e massimizzato il valore finale della loro casa.
+          </p>
+        </div>
+
+        <div class="row g-4 mb-5" id="testimonialsRow">
+          <!-- Card 1 -->
+          <div class="col-lg-6 reveal" id="t-card1">
+            <div class="premium-card text-center h-100">
+              <div class="feedback-avatar avatar-1" id="av1">GM</div>
+              <div class="feedback-stars" id="st1">★★★★★</div>
+              <blockquote class="feedback-quote" id="qu1">
+                “Pensavo il valore fosse più basso. L’analisi mi ha mostrato una strategia di vendita completamente diversa.”
+              </blockquote>
+              <div class="text-navy font-sans fw-semibold mb-1" id="nm1">G.M.</div>
+              <div class="text-gold-dark font-serif fs-7 italic-accent" id="lc1">Sliema</div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col-lg-6 reveal delay-1" id="t-card2">
+            <div class="premium-card text-center h-100">
+              <div class="feedback-avatar avatar-2" id="av2">MC</div>
+              <div class="feedback-stars" id="st2">★★★★★</div>
+              <blockquote class="feedback-quote" id="qu2">
+                “Non è una stima generica, ma un vero posizionamento di mercato.”
+              </blockquote>
+              <div class="text-navy font-sans fw-semibold mb-1" id="nm2">M.C.</div>
+              <div class="text-gold-dark font-serif fs-7 italic-accent" id="lc2">St. Julian’s</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Big statistical counter reveal -->
+        <div class="text-center mt-5 reveal" id="counterSection">
+          <p class="text-danger fw-semibold mt-2 fs-7" id="counterAlert">
+            <i class="bi bi-exclamation-triangle text-gold-dark me-1"></i> Accettiamo un numero limitato di analisi dettagliate ogni settimana per mantenere l'assoluta precisione.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 8 — POSIZIONAMENTO DI MERCATO (SIMPLIFIED RANKING)
+         ========================================== -->
+    <section id="ranking" class="py-5 bg-warm-white ranking-section">
+      <div class="container py-4">
+        <div class="text-center mb-5 reveal" id="rankingHeader">
+          <span class="tag-pill">Censimento Residenziale</span>
+          <h2 class="display-3 text-navy mt-2 mb-3" id="rankingTitle">Posizionamento del mercato immobiliare maltese</h2>
+          <p class="text-muted font-sans max-width-600 mx-auto" id="rankingSubtitle">
+            Distribuzione qualitativa degli asset residenziali maltesi e livello relativo complessivo di appetibilità strategica nel 2026.
+          </p>
+        </div>
+
+        <div class="max-width-800 mx-auto text-start reveal delay-1" id="rankingRowsContainer">
+          <!-- Row 1 -->
+          <div class="ranking-row" id="rankRow1">
+            <div class="row align-items-center mb-1">
+              <div class="col-md-4">
+                <span class="ranking-title">Top Tier Properties</span>
+              </div>
+              <div class="col-md-8 mt-2 mt-md-0">
+                <div class="tier-bar-bg">
+                  <div class="tier-bar bar-gold" data-target-w="90%" id="pbar1"></div>
+                </div>
+              </div>
+            </div>
+            <p class="ranking-desc" id="rankDesc1">Dimore esclusive fronte mare fronte porto, attici d'elite e ville indipendenti certificate in prime spot geografici di Sliema, St. Julian's e Valletta.</p>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="ranking-row" id="rankRow2">
+            <div class="row align-items-center mb-1">
+              <div class="col-md-4">
+                <span class="ranking-title">High Demand Properties</span>
+              </div>
+              <div class="col-md-8 mt-2 mt-md-0">
+                <div class="tier-bar-bg">
+                  <div class="tier-bar bar-teal" data-target-w="70%" id="pbar2"></div>
+                </div>
+              </div>
+            </div>
+            <p class="ranking-desc" id="rankDesc2">Standard costieri con vista mare parziale, immobili semi-nuovi ristrutturati in condomini di pregio con finiture moderne e spazi scoperti vivibili.</p>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="ranking-row" id="rankRow3">
+            <div class="row align-items-center mb-1">
+              <div class="col-md-4">
+                <span class="ranking-title">Stable Market Assets</span>
+              </div>
+              <div class="col-md-8 mt-2 mt-md-0">
+                <div class="tier-bar-bg">
+                  <div class="tier-bar bar-blue" data-target-w="50%" id="pbar3"></div>
+                </div>
+              </div>
+            </div>
+            <p class="ranking-desc" id="rankDesc3">Maisonette cittadine classiche e alloggi di buona metratura nei centri urbani. Ideali per la locazione a lungo termine o investitori locali stabili.</p>
+          </div>
+
+          <!-- Row 4 -->
+          <div class="ranking-row" id="rankRow4">
+            <div class="row align-items-center mb-1">
+              <div class="col-md-4">
+                <span class="ranking-title">Undervalued Opportunities</span>
+              </div>
+              <div class="col-md-8 mt-2 mt-md-0">
+                <div class="tier-bar-bg">
+                  <div class="tier-bar bar-gray" data-target-w="30%" id="pbar4"></div>
+                </div>
+              </div>
+            </div>
+            <p class="ranking-desc" id="rankDesc4">Immobili storici da ristrutturare integralmente o lotti condominiali interni che necessitano di un radicale riposizionamento.</p>
+          </div>
+        </div>
+
+        <!-- Call to Action button -->
+        <div class="text-center mt-5 reveal" id="rankingCtaBlock">
+          <p class="h4 text-navy font-serif mb-4" id="rankCtaText">Qual è il posizionamento esatto della tua casa nel ranking nazionale?</p>
+          <button class="btn btn-gold text-uppercase py-3 px-5 fs-7" data-open-lead-modal="true" id="rankCtaBtn">Ottieni Posizionamento</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================
+         SEZIONE 9 — FOOTER
+         ========================================== -->
+    <footer class="site-footer bg-dark-custom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-start mb-4 mb-md-0">
+            <div class="footer-logo mb-2">Malta Properties</div>
+            <p class="mb-0 text-white-50 font-sans" id="footerSubtitle">Mediterranean Property Intelligence Unit.</p>
+          </div>
+          <div class="col-md-6 text-md-end text-start">
+            <p class="mb-1 text-white-50 font-sans" id="footerMail">Contatti privati: advisor@malta-properties.com</p>
+            <p class="mb-0 text-white-50 font-sans">&copy; 2026 Malta Properties. Tutti i diritti riservati.</p>
+          </div>
+        </div>
+        <hr class="border-secondary opacity-25 my-4" />
+        <div class="row">
+          <div class="col-12 text-start">
+            <p class="text-white-50 opacity-25 fs-10" id="legalText">
+              * Nota informativa: Le pre-valutazioni e l'analisi sul potenziale degli asset generate tramite questo portale costituiscono report di andamento storico e stime preliminari comparative. Non sostituiscono perizie formali o asseverazioni legali rilasciate rinfacciate ai sensi della normativa bancaria maltese. I dati trasmessi sono rigorosamente confidenziali e custoditi in conformità con la normativa europea sul trattamento dei dati GDPR.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- ==========================================
+         SEZIONE 10 — STICKY BOTTOM BAR
+         ========================================= -->
+    <div id="stickyBar" class="sticky-bottom-bar">
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <!-- Text left -->
+          <div class="d-none d-md-flex align-items-center sticky-bar-text">
+            <span class="fs-5 me-2">🧭</span> Ottieni una prima valutazione strategica della tua proprietà a Malta
+          </div>
+          <!-- CTA Trigger -->
+          <div class="w-100 text-end w-md-auto">
+            <button class="btn btn-gold py-2 px-4 fs-8 text-uppercase w-100 w-md-auto" data-open-lead-modal="true" id="stickyCta">Valuta il tuo immobile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         SEZIONE 11 — MODAL LEAD FORM
+         ========================================== -->
+    <div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 520px;">
+        <div class="modal-content luxury-modal-content">
+          <!-- Native dismiss trigger -->
+          <button type="button" class="modal-close-custom" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+          </button>
+
+          <!-- State 1 — Form filling screen -->
+          <div id="modalFormState" class="text-start">
+            <div class="text-center mb-4">
+              <span class="tag-pill">Consulenza Strategica</span>
+              <h3 class="font-serif mb-1 text-navy">Ricevi la tua analisi immobiliare personalizzata</h3>
+              <p class="text-muted fs-8 font-sans">Una valutazione basata su dati reali di mercato e vendite comparabili.</p>
+            </div>
+
+            <!-- Client input system code forms -->
+            <form id="leadSubmissionForm">
+              
+              <!-- First Name & Last Name (Side by Side) -->
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <label for="modalFirstName" class="form-label fs-8 text-uppercase fw-semibold text-navy">Nome *</label>
+                  <input type="text" class="form-control modal-form-input" id="modalFirstName" required placeholder="Es. George" />
+                </div>
+                <div class="col-6">
+                  <label for="modalLastName" class="form-label fs-8 text-uppercase fw-semibold text-navy">Cognome *</label>
+                  <input type="text" class="form-control modal-form-input" id="modalLastName" required placeholder="Es. Micallef" />
+                </div>
+              </div>
+
+              <!-- Phone with prepaid +356 icon placeholder -->
+              <div class="mb-3">
+                <label for="modalPhone" class="form-label fs-8 text-uppercase fw-semibold text-navy">Telefono *</label>
+                <div class="input-group">
+                  <span class="input-group-text modal-input-addon font-sans fs-7">+356</span>
+                  <input type="tel" class="form-control modal-form-input" id="modalPhone" required placeholder="99XXXXXX" />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="modalEmail" class="form-label fs-8 text-uppercase fw-semibold text-navy">Indirizzo Email *</label>
+                <input type="email" class="form-control modal-form-input" id="modalEmail" required placeholder="nome@esempio.com" />
+              </div>
+
+              <!-- Property Address -->
+              <div class="mb-3">
+                <label for="modalAddress" class="form-label fs-8 text-uppercase fw-semibold text-navy">Indirizzo o Area dell'Immobile *</label>
+                <input type="text" class="form-control modal-form-input" id="modalAddress" required placeholder="Es. Triq San Gorg, Sliema" />
+              </div>
+
+              <!-- Notes / TextArea text descriptions -->
+              <div class="mb-4">
+                <label for="modalNotes" class="form-label fs-8 text-uppercase fw-semibold text-navy">Dettagli dell'immobile (Opzionale)</label>
+                <textarea class="form-control modal-form-input" id="modalNotes" rows="2" placeholder="Es. Vista mare, terrazza, mq indicativi..."></textarea>
+              </div>
+
+              <!-- Submit button action triggers -->
+              <button type="submit" class="btn btn-gold py-3 w-100 text-uppercase fw-bold mb-2">Ricevi il report</button>
+              
+              <!-- Privacy Note -->
+              <p class="text-center text-muted fs-8 mb-0 pt-1">
+                <i class="bi bi-lock-fill text-gold-dark me-1"></i> I tuoi dati sono protetti in conformità al regolamento europeo GDPR.
+              </p>
+            </form>
+          </div>
+
+          <!-- State 2 — Success Outcome screen -->
+          <div id="modalSuccessState" class="text-center py-5 d-none">
+            <div class="success-circle-wrapper text-teal mb-4">
+              <svg width="72" height="72" viewBox="0 0 72 72" fill="none" class="d-block mx-auto">
+                <circle cx="36" cy="36" r="32" fill="none" stroke="#2F6F7E" stroke-width="3"></circle>
+                <path d="M22 36L31 45L50 25" stroke="#2F6F7E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </div>
+            
+            <h3 class="display-4 text-navy">Grazie, <span id="successName">George</span>!</h3>
+            <p class="text-muted fs-6 font-sans px-3 mb-4">
+              I dati sono stati inviati con successo ai nostri analisti.
+            </p>
+            <p class="text-navy fw-semibold px-4 mb-4" id="successCallbackText">
+              Un consulente Malta Properties ti contatterà entro 24 ore per presentarti l'analisi comparativa strategica dettagliata del tuo immobile.
+            </p>
+
+            <button type="button" class="btn btn-gold text-uppercase py-2 px-4 fs-8" id="successCloseBtn">Chiudi</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT CDN LOADER & CUSTOM LINK
+         ========================================== -->
+    <!-- Bootstrap Bundle JS (includes Popper) CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom Script connected deferred -->
+    <script src="./script.js" defer></script>
+  </body>
+</html>
